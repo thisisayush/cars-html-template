@@ -1,0 +1,86 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+}
+
+.full-screen {
+    width: 100%;
+    height: 100%;
+}
+
+.absolute-center {
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    margin: auto;
+}
+
+.img-med {
+    width: 120px;
+    height: auto;
+}
+
+section {
+    position: relative;
+}
+
+section .background-wrapper {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+.blurred{
+    transform: scale(1.1);
+    filter: blur(20px);
+}
+section .background-wrapper .left,
+section .background-wrapper .right {
+    position: relative;
+    width: 50%;
+    display: inline-block;
+    height: 100%;
+}
+
+section .background-wrapper .left {
+    float: left;
+}
+
+section .background-wrapper .right {
+    float: right;
+}
+
+section .content-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: hidden;
+}
+
+.fs-slide {
+    position: fixed;
+    top: 0;
+    left: 0;
+    transform: translateY(-100%);
+    transition: 1s transform ease-out;
+    box-shadow: inset 0 0 10px #0f0f0f;
+}
+
+.fs-slide.active {
+    transform: translateY(0);
+}
+
+.fs-slide.next {
+    transform: translateY(100%);
+}
+
+.fs-slide.prev {
+    transform: translateY(-50%);
+}

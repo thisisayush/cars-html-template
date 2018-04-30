@@ -6,7 +6,6 @@ $(document).ready(function (e) {
         runHomeAnimations();
         $(document).on("DOMMouseScroll mousewheel", changeSlideByMouse);
         $(".fs-slide-next").one("click",function(e){
-            console.log("Clicked");
             e.preventDefault();
             processClick(1);
         });

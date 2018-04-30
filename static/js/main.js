@@ -17,6 +17,10 @@ $(document).ready(function (e) {
             e.preventDefault();
             slideTo(this);
         });
+        $("#slides").page().transition("1","none");
+        setTimeout(function(){
+            $("#loader").fadeOut(1000);
+        }, 1500);
     }
     init();
 

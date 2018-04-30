@@ -18,6 +18,11 @@
 </head>
 
 <body>
+    <div id="loader">
+        <div class="absolute-center">
+            <h3>Loading</h3>
+        </div>
+    </div>
     <nav class="navbar navbar-expand-md" id="primaryMenu">
         <a class="navbar-brand" href="#">
             <img class="img-fluid" src="static/image/bnwlogo.png" />
@@ -43,7 +48,7 @@
     </nav>
     <section class="full-screen" id="home" data-animation-context="home">
         <div class="background-wrapper">
-            <video loop autoplay muted>
+            <video loop autoplay muted poster="static/image/loadingvideo.jpg">
                 <source src="http://commondatastorage.googleapis.com/gtv-videos-bucket/sample/TearsOfSteel.mp4" type="video/mp4">
                 Your browser does not support the video tag.
             </video>
@@ -244,7 +249,7 @@
         </div>
     </section>
 
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
     <script src="static/js/animate.js"></script>

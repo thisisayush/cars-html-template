@@ -33,4 +33,7 @@ $(document).ready(function(e){
         $("#home").removeClass("blurred");
         $("#primaryMenu").removeClass("blurred");
     });
+    setTimeout(function(){
+        $("#loader").fadeOut(1000);
+    }, 1500);
 });

@@ -1,3 +1,54 @@
+.slide-controller{
+    position: fixed;
+    bottom: 0;
+    padding: 10px;
+    z-index: 100000;
+    z-index: 9999;
+    color: rgba(255, 255, 255, 0.7);
+    cursor: pointer;
+}
+.slide-controller>a{
+    color: rgba(255, 255, 255, 0.4);
+    transition: 0.5s all;
+    text-decoration: none;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 16px;
+}
+.slide-controller>a:hover{
+    color: rgba(255, 255, 255, 1);
+}
+.slide-controller.next{
+    right: 0;
+}
+.slide-controller.prev{
+    left: 0;
+}
+#primaryMenu{
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 9999;
+    padding: 30px;
+}
+#primaryMenu .navbar-brand>img{
+    width: 60px;
+    height: auto;
+}
+
+#primaryMenuCollapse .nav-item{
+    font-family: 'Quicksand', sans-serif;
+    color: rgba(255, 255, 255, 0.6);
+    padding: 10px;
+    font-size: 18px;
+    text-transform: uppercase;
+}
+#primaryMenuCollapse .nav-item>a{
+    text-decoration: none;
+    color: inherit;
+}
+#primaryMenuCollapse .nav-item>a:hover{
+    color:inherit;
+}
 #home .background-wrapper .left {
     background-color: #b91d22;
     box-shadow: inset 0 0 20px 1px #0f0f0f
@@ -54,4 +105,11 @@
     max-height: 120px;
     width: auto;
     margin-bottom: 10px;
+}
+
+#gallery .background-wrapper .left{
+    background-color: #b91d22;
+}
+#gallery .background-wrapper .right{
+    background-color: #0f0f0f;
 }

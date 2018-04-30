@@ -13,80 +13,195 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet">
     <link rel="stylesheet" href="static/css/animate.css" />
+    <link rel="stylesheet" href="static/css/jquery.page.css" />
     <link rel="stylesheet" href="static/css/main.css" />
     <link rel="stylesheet" href="static/css/home.css" />
 </head>
 
 <body>
-    <section class="full-screen fs-slide active" id="home" data-animation-context="home">
-        <div class="background-wrapper">
-            <div class="left">
-            </div>
-            <div class="right">
-            </div>
+    <div class="slide-controller next">
+        <a href="#" class="fs-slide-next">Next</a>
+    </div>
+    <div class="slide-controller prev">
+        <a href="#" class="fs-slide-prev">Prev</a>
+    </div>
+    <nav class="navbar navbar-expand-md" id="primaryMenu">
+        <a class="navbar-brand" href="#">
+            <img class="img-fluid" src="static/image/bnwlogo.png" />
+        </a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#primaryMenuCollapse" aria-controls="primaryMenuCollapse"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="primaryMenuCollapse">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link fs-slide-to" data-slide-to="5" href="#">lINK1</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Link2</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="#">Link3</a>
+                </li>
+            </ul>
         </div>
-        <div class="content-wrapper">
-            <div class="absolute-center d-flex align-items-center" id="home-content">
-                <div class="row w-100 align-items-center mx-auto">
-                    <div class="left col-4 text-center">
-                        <h3 id="home-title-left">LEFT TITLE</h3>
+    </nav>
+    <div id="slides">
+        <div>
+            <section class="full-screen fs-slide page active" id="home" data-jquery-page-name="1" data-animation-context="home" data-transition="slide-in-from-bottom">
+                <div class="background-wrapper">
+                    <div class="left">
                     </div>
-                    <div class="center col-4 text-center">
-                        <img class="img-med fs-slide-next" src="static/image/car-top.png" id="home-car">
-                    </div>
-                    <div class="right col-4 text-center">
-                        <h3 id="home-title-right">RIGHT TITLE</h3>
+                    <div class="right">
                     </div>
                 </div>
-            </div>
-            <footer>
-                Scroll Down For More
-            </footer>
-        </div>
-    </section>
-    <section class="full-screen fs-slide next" id="cars" data-animation-context="cars">
-        <div class="background-wrapper">
-            <div class="left">
-            </div>
-            <div class="right">
-            </div>
-        </div>
-        <div class="content-wrapper">
-            <div class="absolute-center d-flex align-items-center" id="cars-content">
-                <div class="row w-100 align-items-center mx-auto">
-                    <div class="left col">
-                        <div class="row">
-                            <div class="col text-center car-box">
-                                <img class="car-image" src="static/image/car-top.png">
-                                <h3 class="car-name">Demo Brand</h3>
+                <div class="content-wrapper">
+                    <div class="absolute-center d-flex align-items-center" id="home-content">
+                        <div class="row w-100 align-items-center mx-auto">
+                            <div class="left col-4 text-center">
+                                <h3 id="home-title-left">LEFT TITLE</h3>
                             </div>
-                            <div class="col text-center car-box">
-                                <img class="car-image" src="static/image/car-top.png">
-                                <h3 class="car-name">Demo Brand</h3>
+                            <div class="center col-4 text-center">
+                                <img class="img-med fs-slide-next" src="static/image/car-top.png" id="home-car">
+                            </div>
+                            <div class="right col-4 text-center">
+                                <h3 id="home-title-right">RIGHT TITLE</h3>
                             </div>
                         </div>
                     </div>
-                    <div class="right col">
-                        <div class="row">
-                            <div class="col text-center car-box">
-                                <img class="car-image" src="static/image/car-top.png">
-                                <h3 class="car-name">Demo Brand</h3>
+                    <footer>
+                        Scroll Down For More
+                    </footer>
+                </div>
+            </section>
+            <section class="full-screen fs-slide page" id="cars" data-jquery-page-name="2" data-animation-context="cars" data-transition="slide-in-from-left">
+                <div class="background-wrapper">
+                    <div class="left">
+                    </div>
+                    <div class="right">
+                    </div>
+                </div>
+                <div class="content-wrapper">
+                    <div class="absolute-center d-flex align-items-center" id="cars-content">
+                        <div class="row w-100 align-items-center mx-auto">
+                            <div class="left col">
+                                <div class="row">
+                                    <div class="col text-center car-box">
+                                        <img class="car-image" src="static/image/car-top.png">
+                                        <h3 class="car-name">Demo Brand</h3>
+                                    </div>
+                                    <div class="col text-center car-box">
+                                        <img class="car-image" src="static/image/car-top.png">
+                                        <h3 class="car-name">Demo Brand</h3>
+                                    </div>
+                                </div>
                             </div>
-                            <div class="col text-center car-box">
-                                <img class="car-image" src="static/image/car-top.png">
-                                <h3 class="car-name">Demo Brand</h3>
+                            <div class="right col">
+                                <div class="row">
+                                    <div class="col text-center car-box">
+                                        <img class="car-image" src="static/image/car-top.png">
+                                        <h3 class="car-name">Demo Brand</h3>
+                                    </div>
+                                    <div class="col text-center car-box">
+                                        <img class="car-image" src="static/image/car-top.png">
+                                        <h3 class="car-name">Demo Brand</h3>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-            </div>
+            </section>
+            <section class="full-screen fs-slide page" id="gallery" data-jquery-page-name="3" data-animation-context="gallery" data-transition="slide-in-from-bottom">
+                <div class="background-wrapper">
+                    <div class="left">
+                    </div>
+                    <div class="right">
+                    </div>
+                </div>
+                <div class="content-wrapper">
+                    <div class="absolute-center d-flex align-items-center" id="cars-content">
+                        <div class="row w-100 align-items-center mx-auto">
+                            <div class="left col">
+                                <h1>Left content</h1>
+                            </div>
+                            <div class="right col">
+                                <h1>Slide 3</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="full-screen fs-slide page" id="stores" data-jquery-page-name="4" data-animation-context="stores" data-transition="slide-in-from-right">
+                <div class="background-wrapper">
+                    <div class="left">
+                    </div>
+                    <div class="right">
+                    </div>
+                </div>
+                <div class="content-wrapper">
+                    <div class="absolute-center d-flex align-items-center" id="cars-content">
+                        <div class="row w-100 align-items-center mx-auto">
+                            <div class="left col">
+                                <h1>Left content</h1>
+                            </div>
+                            <div class="right col">
+                                <h1>Slide 4</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="full-screen fs-slide page" id="aboutUs" data-jquery-page-name="5" data-animation-context="aboutUs" data-transition="slide-in-from-top">
+                <div class="background-wrapper">
+                    <div class="left">
+                    </div>
+                    <div class="right">
+                    </div>
+                </div>
+                <div class="content-wrapper">
+                    <div class="absolute-center d-flex align-items-center" id="cars-content">
+                        <div class="row w-100 align-items-center mx-auto">
+                            <div class="left col">
+                                <h1>Left content</h1>
+                            </div>
+                            <div class="right col">
+                                <h1>Slide 5</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section class="full-screen fs-slide page" id="contact" data-jquery-page-name="6" data-animation-context="contact" data-transition="slide-in-from-left">
+                <div class="background-wrapper">
+                    <div class="left">
+                    </div>
+                    <div class="right">
+                    </div>
+                </div>
+                <div class="content-wrapper">
+                    <div class="absolute-center d-flex align-items-center" id="cars-content">
+                        <div class="row w-100 align-items-center mx-auto">
+                            <div class="left col">
+                                <h1>Left content</h1>
+                            </div>
+                            <div class="right col">
+                                <h1>Slide 6</h1>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
         </div>
-    </section>
+    </div>
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
     <script src="static/js/animate.js"></script>
+    <script src="static/js/jquery.page.min.js"></script>
     <script src="static/js/main.js"></script>
 </body>
 

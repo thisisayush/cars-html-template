@@ -2,16 +2,85 @@ $(document).ready(function (e) {
     var pageTransitionTimeout = 1000;
 
     function init() {
+        $("#slides").page();
         runHomeAnimations();
         $(document).on("DOMMouseScroll mousewheel", changeSlideByMouse);
-        $(".fs-slide-next").click(gotoNextSlide);
-        $(".fs-slide-prev").click(gotoPrevSlide);
+        $(".fs-slide-next").one("click",function(e){
+            console.log("Clicked");
+            e.preventDefault();
+            processClick(1);
+        });
+        $(".fs-slide-prev").one("click", function(e){
+            e.preventDefault();
+            processClick(-1);
+        });
+        $(".fs-slide-to").one("click", function(e){
+            e.preventDefault();
+            slideTo(this);
+        });
     }
     init();
 
+    function slideTo(obj){
+        var slide = parseInt($(obj).attr("data-slide-to"));
+        var curr = parseInt($(".fs-slide.active").attr("data-jquery-page-name"));
+        changeSlide(slide - curr);
+        setTimeout(function(){
+            $(".fs-slide-to").one("click", function(e){
+                e.preventDefault();
+                slideTo(this);
+            });
+        }, pageTransitionTimeout);
+    }
+
+    function processClick(type){
+        if(type == 1){
+            
+            changeSlide(1);
+            setTimeout(function(){
+                $(".fs-slide-next").one("click",function(e){
+                    e.preventDefault();
+                    processClick(1);
+                });
+            }, pageTransitionTimeout);
+        }else{
+            changeSlide(-1);
+            setTimeout(function(){
+                $(".fs-slide-prev").one("click", function(e){
+                    e.preventDefault();
+                    processClick(-1);
+                });
+            }, pageTransitionTimeout);
+        }
+    }
+
+    /** Internal Slide Animations */
     function runSlideAnimations() {
         var active = $(".fs-slide.active").attr("data-animation-context");
-
+        
+        var animations = ["bounce","flash", "pulse", "rubberBand",
+        "shake", "headShake", "swing", "tada",
+        "wobble", "jello", "bounceIn", "bounceInDown",
+        "bounceInLeft", "bounceInRight", "bounceInUp", "bounceOut",
+        "bounceOutDown", "bounceOutLeft", "bounceOutRight", "bounceOutUp",
+        "fadeIn", "fadeInDown", "fadeInDownBig", "fadeInLeft",
+        "fadeInLeftBig", "fadeInRight", "fadeInRightBig", "fadeInUp",
+        "fadeInUpBig", "fadeOut", "fadeOutDown", "fadeOutDownBig",
+        "fadeOutLeft", "fadeOutLeftBig", "fadeOutRight", "fadeOutRightBig",
+        "fadeOutUp", "fadeOutUpBig", "flipInX", "flipInY",
+        "flipOutX", "flipOutY", "lightSpeedIn", "lightSpeedOut",
+        "rotateIn", "rotateInDownLeft", "rotateInDownRight", "rotateInUpLeft",
+        "rotateInUpRight", "rotateOut", "rotateOutDownLeft", "rotateOutDownRight",
+        "rotateOutUpLeft", "rotateOutUpRight", "hinge", "jackInTheBox",
+        "rollIn", "rollOut", "zoomIn", "zoomInDown",
+        "zoomInLeft", "zoomInRight", "zoomInUp", "zoomOut",
+        "zoomOutDown", "zoomOutLeft", "zoomOutRight", "zoomOutUp",
+        "slideInDown", "slideInLeft", "slideInRight", "slideInUp",
+        "slideOutDown", "slideOutLeft", "slideOutRight", "slideOutUp"]
+        for(x in animations){
+            $(".animated").removeClass(animations[x]);
+        }
+        $(".animated").removeClass("animated");
         if (active == "home")
             runHomeAnimations();
         else if (active == "cars")
@@ -19,6 +88,7 @@ $(document).ready(function (e) {
     }
 
     function runHomeAnimations() {
+        /** Home Slide Animations */
         $("#home-car").css("opacity", "0");
         $("#home-title-left, #home-title-right").css("visibility", "hidden");
         setTimeout(function () {
@@ -32,6 +102,7 @@ $(document).ready(function (e) {
     }
 
     function runCarsAnimations() {
+        /** Cars Slide Animations **/
         var cars = $("#cars-content .car-box");
         cars.css("opacity", 0);
         cars.css("animation-duration", "500ms");
@@ -56,10 +127,10 @@ $(document).ready(function (e) {
         var isScrolled = false;
         if (e.originalEvent.detail > 0 || e.originalEvent.wheelDelta < 0) {
             //down
-            isScrolled = gotoNextSlide();
+            isScrolled = changeSlide(1);
         } else {
             //up
-            isScrolled = gotoPrevSlide();
+            isScrolled = changeSlide(-1);
         }
         if (isScrolled == true) {
             setTimeout(function (e) {
@@ -70,27 +141,28 @@ $(document).ready(function (e) {
         }
     }
 
-    function gotoNextSlide() {
-        var curr = $(".fs-slide.active");
-        var next = $(".fs-slide.next");
-        if (next.length == 0) {
-            return false;
-        }
-        next.addClass("active").removeClass("next");
-        curr.removeClass("active").addClass("prev");
-        runSlideAnimations();
-        return true;
-    }
+    function changeSlide(direction){
+        /** Changes Slide 
+         * direction: -1 = previous
+         * direction: +1 = next
+         * **/
 
-    function gotoPrevSlide() {
-        var curr = $(".fs-slide.active");
-        var prev = $(".fs-slide.prev");
-        if (prev.length == 0) {
+        var page = parseInt($(".fs-slide.active").attr("data-jquery-page-name"));
+
+        page += direction;
+        var trans  = $(".fs-slide.active").attr("data-transition");
+        page = page.toString();
+        if ($("#slides").page().fetch(page) === null){
+            $("#slides").page().shake();
             return false;
         }
-        $(".fs-slide.prev").addClass("active").removeClass("prev");
-        curr.removeClass("active").addClass("next");
-        runSlideAnimations();
-        return true;
+        else{
+            console.log("Changing to slide " + page);
+            $("#slides").page().transition(page, trans);
+            $(".fs-slide.active").removeClass("active");
+            $(".fs-slide[data-jquery-page-name="+page+"]").addClass("active");
+            runSlideAnimations();
+            return true;
+        }
     }
 });
